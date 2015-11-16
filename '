@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Phonebook </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <style type="text/css">
+      .top10 { margin-top: 10px; }
+      .top20 { margin-top: 20px; }
+      .phonebook-add-contact { border: 1px solid #ddd; padding: 10px; border-radius: 5px }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+          <h1 class="text-center"> Phonebook </h1>
+          <hr />
+
+          <a class="add-contact" href="#"> Add new contact </a>
+
+          <div class="phonebook-add-contact top10">
+            <form action="http://localhost:3000/api/contacts" method="POST">
+              <div class="row">
+                <div class="col-lg-6">
+                  <input type="text" name="name" class="form-control" placeholder="Name" />
+                </div>
+
+                <div class="col-lg-6">
+                  <input type="text" name="phone" class="form-control" placeholder="Phone" />
+                </div>
+              </div>
+  
+              <div class="top10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+              </div>
+            </form>
+          </div>
+
+          <div class="clearfix"></div>
+          
+          <div class="phonebook-list top20">
+          </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"> </script>
+    <script type="text/javascript" src="js/pnbk.js"> </script>
+  </body>
+</html>
