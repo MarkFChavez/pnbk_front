@@ -71,7 +71,7 @@ $(document).ready(function() {
     $(".phonebook-create-contact").trigger("reset");
   }
   
-  $(".add-contact").on("click", function() {
+  $(".add-contact, .cancel-create-contact").on("click", function() {
     toggleAddContact();
   });
 
@@ -129,25 +129,6 @@ $(document).ready(function() {
       success: function(data) {
         getContacts();
         toggleAddContact();
-      },
-      error: function(data) {
-        alert("error");
-      }
-    });
-  }
-
-  var createContacts = function() {
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:3000/api/contacts",
-      data: { 
-        // contact: {
-        //   name: 
-        //   phone: 
-        // }
-      },
-      success: function(data) {
-        alert("success");
       },
       error: function(data) {
         alert("error");
