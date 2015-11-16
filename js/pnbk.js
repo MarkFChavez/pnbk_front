@@ -1,8 +1,21 @@
 $(document).ready(function() {
   $(".phonebook-add-contact").css("display", "none");
 
-  $(".add-contact").on("click", function() {
+  var toggleAddContact = function() {
     $(".phonebook-add-contact").toggle();
+  }
+  
+  $(".add-contact").on("click", function() {
+    toggleAddContact();
+  });
+
+  $(".phonebook-create-contact").on("submit", function(event) {
+    event.preventDefault();
+
+    var name = $(this).find(".contact-name").val();
+    var phone = $(this).find(".contact-phone").val();
+
+    createContact( $(this).attr("action"), name, phone );
   });
 
   var getContacts = function() {
@@ -20,6 +33,26 @@ $(document).ready(function() {
         });
 
         $(".phonebook-list").html(items);
+      },
+      error: function(data) {
+        alert("error");
+      }
+    });
+  }
+
+  var createContact = function(url, name, phone) {
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: { 
+        contact: {
+          name: name,
+          phone: phone
+        }
+      },
+      success: function(data) {
+        getContacts();
+        toggleAddContact();
       },
       error: function(data) {
         alert("error");
